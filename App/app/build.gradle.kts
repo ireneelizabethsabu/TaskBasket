@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "app.ies.taskbasket"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "app.ies.taskbasket"
@@ -66,4 +66,5 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation(kotlin("script-runtime"))
 }
