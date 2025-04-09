@@ -4,7 +4,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class TaskbasketApplication
+class TaskbasketApplication{
+
+}
 
 fun main(args: Array<String>) {
 	runApplication<TaskbasketApplication>(*args)

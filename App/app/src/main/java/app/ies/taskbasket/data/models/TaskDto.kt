@@ -1,5 +1,7 @@
 package app.ies.taskbasket.data.models
 
+import app.ies.taskbasket.domain.models.Task
+import app.ies.taskbasket.utils.model.Priority
 import java.time.LocalDateTime
 
 data class TaskDto (
@@ -10,8 +12,17 @@ data class TaskDto (
     val isTaskOpen: Boolean,
     val priority: Priority,
     val isReminderSet: Boolean
-)
-
-enum class Priority {
-    LOW, MEDIUM, HIGH
+){
+    fun toDomain() : Task {
+        return Task(
+            id = id,
+            title = title,
+            description = description,
+            createdOn = createdOn,
+            priority = priority,
+            isTaskOpen = isTaskOpen,
+            isReminderSet = isReminderSet
+        )
+    }
 }
+
