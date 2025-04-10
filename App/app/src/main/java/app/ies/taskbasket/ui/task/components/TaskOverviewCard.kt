@@ -76,9 +76,12 @@ fun TaskOverviewPreview(){
             "Task name",
             "This is a very long task description",
             LocalDateTime.now(),
+            LocalDateTime.now(),
             Priority.High,
             true,
             false,
+            10,
+            1
         )
     )
 }

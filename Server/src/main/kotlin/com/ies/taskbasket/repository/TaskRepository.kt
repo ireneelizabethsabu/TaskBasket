@@ -1,6 +1,6 @@
 package com.ies.taskbasket.repository
 
-import com.ies.taskbasket.data.Task
+import com.ies.taskbasket.data.entity.Task
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 import org.springframework.stereotype.Repository

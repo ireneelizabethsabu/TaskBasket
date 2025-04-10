@@ -9,9 +9,12 @@ data class TaskDto (
     val title: String,
     val description: String,
     val createdOn: String,
-    val isTaskOpen: Boolean,
+    val dueOn: String,
     val priority: Priority,
-    val isReminderSet: Boolean
+    val isTaskOpen: Boolean,
+    val isReminderSet: Boolean,
+    val percentDone: Int,
+    val projectId: Long,
 ){
     fun toDomain() : Task {
         return Task(
@@ -22,7 +25,9 @@ data class TaskDto (
             priority = priority,
             isTaskOpen = isTaskOpen,
             isReminderSet = isReminderSet,
-//            dueDate = createdOn
+            dueOn = LocalDateTime.parse(dueOn),
+            percentDone = percentDone,
+            projectId = projectId
         )
     }
 }

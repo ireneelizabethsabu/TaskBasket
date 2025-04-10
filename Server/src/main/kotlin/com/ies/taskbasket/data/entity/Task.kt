@@ -1,4 +1,4 @@
-package com.ies.taskbasket.data
+package com.ies.taskbasket.data.entity
 
 import com.ies.taskbasket.data.model.Priority
 import jakarta.persistence.Column
@@ -8,7 +8,8 @@ import jakarta.persistence.Enumerated
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
-import jakarta.persistence.SequenceGenerator
+import jakarta.persistence.JoinColumn
+import jakarta.persistence.ManyToOne
 import jakarta.persistence.Table
 import jakarta.persistence.UniqueConstraint
 import jakarta.validation.constraints.NotBlank
@@ -32,6 +33,9 @@ class Task {
     @Column(name = "created_on", nullable = false)
     var createdOn: LocalDateTime = LocalDateTime.now()
 
+    @Column(name = "due_on", nullable = false)
+    var dueOn: LocalDateTime = LocalDateTime.now()
+
     @Column(name = "is_open", nullable = false)
     var isTaskOpen: Boolean = true
 
@@ -42,6 +46,11 @@ class Task {
     @Column(name = "is_reminder_set", nullable = false)
     var isReminderSet: Boolean = false
 
+    @Column(name = "percent_done", nullable = false)
+    var percentDone: Int = 0
 
+    @ManyToOne
+    @JoinColumn(name = "project_id", nullable = false)
+    var project: Project? = null
 
 }

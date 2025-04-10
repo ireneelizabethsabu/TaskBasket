@@ -3,8 +3,10 @@ package app.ies.taskbasket.ui.createTask
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import app.ies.taskbasket.data.models.TaskCreateRequest
+import app.ies.taskbasket.domain.models.Project
 import app.ies.taskbasket.domain.models.Task
 import app.ies.taskbasket.domain.usecase.task.AddTaskUseCase
+import app.ies.taskbasket.utils.DateConverter
 import app.ies.taskbasket.utils.UiState
 import app.ies.taskbasket.utils.model.Priority
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -60,6 +62,9 @@ class CreateTaskViewModel @Inject constructor(
             title = uiState.value.title,
             description = uiState.value.description,
             priority = uiState.value.priority,
+            dueOn = DateConverter.convertDateToIsoString(uiState.value.selectedDate),
+            percentDone = 0,
+            project = Project(1,"25AB", "Project", "Description", true, LocalDateTime.now())
         )
         viewModelScope.launch {
             addTaskUseCase(task).onSuccess {
@@ -72,6 +77,7 @@ class CreateTaskViewModel @Inject constructor(
                 _uiState.update {
                     it.copy(state =  UiState.Error(error.message ?: "Error") )
                 }
+                println(error)
             }
         }
     }

@@ -19,10 +19,10 @@ class TaskScreenViewModel @Inject constructor(
 
     fun getAllTasks(){
         viewModelScope.launch {
-            val tasks = getAllTasksUseCase()
-            _uiState.update {
-                it.copy(tasks = tasks)
-            }
+//            val tasks = getAllTasksUseCase()
+//            _uiState.update {
+//                it.copy(tasks = tasks)
+//            }
         }
     }
 }

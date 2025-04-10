@@ -8,9 +8,11 @@ data class Task (
     val title: String,
     val description: String,
     val createdOn: LocalDateTime,
-//    val dueDate: LocalDateTime,
+    val dueOn: LocalDateTime,
     val priority: Priority,
     val isTaskOpen: Boolean,
-    val isReminderSet: Boolean
+    val isReminderSet: Boolean,
+    val percentDone: Int,
+    val projectId: Long,
 )
 
