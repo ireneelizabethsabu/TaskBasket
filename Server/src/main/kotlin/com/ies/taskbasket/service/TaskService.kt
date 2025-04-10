@@ -9,6 +9,7 @@ import com.ies.taskbasket.exception.BadRequestexception
 import com.ies.taskbasket.exception.TaskNotFoundException
 import com.ies.taskbasket.repository.TaskRepository
 import org.springframework.stereotype.Service
+import java.time.LocalDateTime
 import java.util.stream.Collectors
 
 @Service
@@ -28,7 +29,7 @@ class TaskService(private  val taskRepository: TaskRepository) {
     private fun assignValuesToEntity(task: Task, taskRequest: TaskCreateRequest){
         task.title = taskRequest.title
         task.description = taskRequest.description
-        task.createdOn = taskRequest.createdOn
+        task.createdOn = LocalDateTime.now()
         task.isTaskOpen = taskRequest.isTaskOpen
         task.priority = taskRequest.priority
         task.isReminderSet = taskRequest.isReminderSet

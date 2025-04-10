@@ -8,7 +8,6 @@ import java.time.LocalDateTime
 data class TaskCreateRequest (
     val title: String,
     val description: String,
-    val createdOn: LocalDateTime = LocalDateTime.now(),
     val isTaskOpen: Boolean = true,
     val priority: Priority,
     val isReminderSet: Boolean = false

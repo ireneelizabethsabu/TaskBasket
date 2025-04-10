@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Info
@@ -21,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
@@ -34,21 +36,22 @@ fun TaskStatusCard(
     Card(
       elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primary),
+        shape = RoundedCornerShape(25),
         modifier = modifier
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(10.dp)
+                .padding(vertical =  10.dp, horizontal = 15.dp)
         ) {
             Icon(imageVector = icon, contentDescription = null, modifier = Modifier.padding(vertical = 5.dp))
             Spacer(modifier = Modifier.height(5.dp))
-            Text(text = text, style = MaterialTheme.typography.labelMedium)
+            Text(text = text, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Light)
             Spacer(modifier = Modifier.height(5.dp))
             Row(
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(text = "$numberOfTasks ", style = MaterialTheme.typography.titleLarge)
+                Text(text = "$numberOfTasks ", style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold)
                 Text(text = "Tasks", style = MaterialTheme.typography.titleMedium)
             }
         }

@@ -7,6 +7,7 @@ import app.ies.taskbasket.domain.models.Task
 import app.ies.taskbasket.domain.repository.TaskRepository
 import app.ies.taskbasket.utils.ResultState
 import kotlinx.coroutines.flow.Flow
+import retrofit2.HttpException
 import javax.inject.Inject
 
 
@@ -23,8 +24,16 @@ class DefaultTaskRepository @Inject constructor(
         TODO("Not yet implemented")
     }
 
-    override suspend fun createTask(task: TaskCreateRequest) : Task {
-        return api.createTask().toDomain()
+    override suspend fun createTask(task: TaskCreateRequest) : Result<Task> {
+        try {
+            val response =  api.createTask(task).toDomain()
+            return Result.success(response)
+        } catch (e: HttpException){
+            return Result.failure(e)
+        } catch (e: Exception){
+            return Result.failure(e)
+        }
+
     }
 
     override suspend fun deleteTask(id: Long) {

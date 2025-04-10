@@ -8,7 +8,7 @@ data class TaskDto (
     val id: Long,
     val title: String,
     val description: String,
-    val createdOn: LocalDateTime,
+    val createdOn: String,
     val isTaskOpen: Boolean,
     val priority: Priority,
     val isReminderSet: Boolean
@@ -18,10 +18,11 @@ data class TaskDto (
             id = id,
             title = title,
             description = description,
-            createdOn = createdOn,
+            createdOn = LocalDateTime.parse(createdOn),
             priority = priority,
             isTaskOpen = isTaskOpen,
-            isReminderSet = isReminderSet
+            isReminderSet = isReminderSet,
+//            dueDate = createdOn
         )
     }
 }

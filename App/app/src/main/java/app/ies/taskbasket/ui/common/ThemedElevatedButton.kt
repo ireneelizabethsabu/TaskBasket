@@ -25,7 +25,7 @@ fun ThemedElevatedButton(
         ),
         modifier = Modifier.fillMaxWidth().height(60.dp)
     ) {
-        Text(text = text)
+        Text(text = text,style = MaterialTheme.typography.bodyLarge)
     }
 }
 

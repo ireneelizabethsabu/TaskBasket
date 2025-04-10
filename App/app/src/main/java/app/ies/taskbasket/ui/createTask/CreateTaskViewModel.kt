@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import app.ies.taskbasket.data.models.TaskCreateRequest
 import app.ies.taskbasket.domain.models.Task
 import app.ies.taskbasket.domain.usecase.task.AddTaskUseCase
+import app.ies.taskbasket.utils.UiState
 import app.ies.taskbasket.utils.model.Priority
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -61,7 +62,17 @@ class CreateTaskViewModel @Inject constructor(
             priority = uiState.value.priority,
         )
         viewModelScope.launch {
-            addTaskUseCase(task)
+            addTaskUseCase(task).onSuccess {
+                task ->
+                _uiState.update {
+                    it.copy(state =  UiState.Success(task) )
+                }
+            }.onFailure {
+                error ->
+                _uiState.update {
+                    it.copy(state =  UiState.Error(error.message ?: "Error") )
+                }
+            }
         }
     }
 }

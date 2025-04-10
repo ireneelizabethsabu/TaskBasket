@@ -16,13 +16,17 @@ import app.ies.taskbasket.utils.model.Priority
 fun ThemedFilterChip(
     isSelected: Boolean,
     item: Priority,
-    onClick: (Priority) -> Unit
+    isLarge: Boolean  = false,
+    onClick: (Priority) -> Unit,
 ){
     FilterChip(
         selected = isSelected,
         onClick = { onClick(item) },
         label = {
-            Text(text = item.name, modifier = Modifier.padding(10.dp))
+            Text(
+                text = item.name,
+                modifier = Modifier.padding(10.dp),
+                style = if(isLarge) MaterialTheme.typography.bodyLarge else MaterialTheme.typography.bodyMedium)
         },
         shape = CircleShape,
         colors = FilterChipDefaults.filterChipColors(

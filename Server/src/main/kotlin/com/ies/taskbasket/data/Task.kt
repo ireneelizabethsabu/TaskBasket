@@ -37,7 +37,7 @@ class Task {
 
     @NotNull
     @Enumerated(EnumType.STRING)
-    var priority: Priority = Priority.LOW
+    var priority: Priority = Priority.Low
 
     @Column(name = "is_reminder_set", nullable = false)
     var isReminderSet: Boolean = false

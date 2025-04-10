@@ -9,7 +9,7 @@ import javax.inject.Inject
 class AddTaskUseCase @Inject constructor(
     private  val taskRepository: TaskRepository
 ){
-    suspend operator  fun invoke(task: TaskCreateRequest) : Task{
+    suspend operator  fun invoke(task: TaskCreateRequest) : Result<Task> {
         if(task.title.isEmpty()){
             throw CannotBeEmptyException()
         }
